@@ -1,25 +1,26 @@
 const mongoose = require('mongoose');
+
 const pointSchema = new mongoose.Schema({
-  timeStamp: Number,
+  timestamp: Number,
   coords: {
-    latitude: Number, 
-    longitude: Number, 
+    latitude: Number,
+    longitude: Number,
     altitude: Number,
-    accuracy: Number, 
+    accuracy: Number,
     heading: Number,
-    speed: Number
-  }
+    speed: Number,
+  },
 });
-const trackSchema =  new mongoose.Schema({
+const trackSchema = new mongoose.Schema({
   userId: {
-    type: mongoose.Schema.Types.ObjectId, 
-    ref: 'User'
-  }, 
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'User',
+  },
   name: {
     type: String,
-    default: '', 
-    locations: [pointSchema],
-  }
+    default: '',
+  },
+  locations: [pointSchema],
 });
 
 mongoose.model('Track', trackSchema);
